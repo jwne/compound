@@ -15,10 +15,17 @@
  */
 package net.alexmack.compound;
 
+/**
+ * Provides various methods to convert standard data structures
+ * to {@link Compound}s and vice versa.
+ */
 public class CompoundConversion {
 
 	private static final String ARRAY_SIZE = "s";
 	
+	/**
+	 * Constructs a {@link Compound} representing the given array.
+	 */
 	public Compound toCompound(Object[] array) {
 		Compound compound = new Compound();
 		compound.set(ARRAY_SIZE, array.length);
@@ -27,6 +34,9 @@ public class CompoundConversion {
 		return compound;
 	}
 	
+	/**
+	 * Returns the array represented by the given {@link Compound}.
+	 */
 	public Object[] toArray(Compound compound) {
 		Object[] array = new Object[compound.getDefault(ARRAY_SIZE, 0)];
 		for (int i = 0; i != array.length; i++)

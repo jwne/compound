@@ -15,8 +15,14 @@
  */
 package net.alexmack.compound;
 
+/**
+ * Provides casting utilities essential to {@link CompoundIO}.
+ */
 public class CompoundCast {
 
+	/**
+	 * Returns the given {@link Object} as an <code>int</code>.
+	 */
 	public static int asInt(Object o) {
 		if (o instanceof Byte) {
 			return ((Byte) o).intValue();
@@ -28,6 +34,9 @@ public class CompoundCast {
 		throw new RuntimeException(o.getClass().getName() + " cannot be cast to Integer!");
 	}
 	
+	/**
+	 * Returns the given {@link Object} as a <code>long</code>.
+	 */
 	public static long asLong(Object o) {
 		if (o instanceof Long) {
 			return ((Long) o).longValue();
@@ -36,6 +45,9 @@ public class CompoundCast {
 		}
 	}
 	
+	/**
+	 * Returns the given {@link Object} as a <code>double</code>.
+	 */
 	public static double asDouble(Object o) {
 		if (o instanceof Double) {
 			return ((Double) o).doubleValue();
@@ -46,6 +58,9 @@ public class CompoundCast {
 		}
 	}
 	
+	/**
+	 * Returns the given {@link Object} as a <code>boolean</code>.
+	 */
 	public static boolean asBoolean(Object o) {
 		if (o instanceof Boolean) {
 			return ((Boolean) o).booleanValue();
