@@ -23,6 +23,9 @@ public class Compound implements Cloneable {
 
 	private final Map<String, Object> MAP = new HashMap<String, Object>();
 	
+	/**
+	 * {@link UUID} used to reference this {@link Compound}.
+	 */
 	public final UUID ID = UUID.randomUUID();
 	
 	/**

@@ -16,7 +16,7 @@
 package net.alexmack.compound;
 
 /**
- * Provides casting utilities essential to {@link CompoundIO}.
+ * Provides casting functionality essential to {@link CompoundIO}.
  */
 public class CompoundCast {
 

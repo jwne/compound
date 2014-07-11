@@ -30,14 +30,28 @@ import net.alexmack.compound.stack.CompoundStack;
 import net.alexmack.compound.stack.CompoundStack.CompoundStackItem;
 import net.alexmack.compound.stack.CompoundStackReverse;
 
+/**
+ * Provies methods for reading/writing {@link Compound}s.
+ */
 public class CompoundIO {
 	
+	/**
+	 * Radix to be used when representing numbers in
+	 * any base other than 10.
+	 */
 	public static final int RADIX = 32;
 	
+	/**
+	 * Writes the given {@link Compound} to the given {@link File} using
+	 * {@link CompoundOutputStream}.
+	 */
 	public static void write(final Compound COMPOUND, final File FILE) throws Exception {
 		write(COMPOUND, new CompoundOutputStream(new DataOutputStream(new FileOutputStream(FILE))));
 	}
 	
+	/**
+	 * Writes the given {@link Compound} to the given {@link CompoundOutput}.
+	 */
 	public static void write(final Compound COMPOUND, final CompoundOutput OUTPUT) throws Exception {
 		final CompoundStack STACK = new CompoundStack();
 		STACK.addRoot(COMPOUND);
@@ -69,10 +83,17 @@ public class CompoundIO {
 		}
 	}
 	
+	/**
+	 * Reads a {@link Compound} from the given {@link File} using
+	 * {@link CompoundInputStream}.
+	 */
 	public static Compound read(final File FILE) throws Exception {
 		return read(new CompoundInputStream(new DataInputStream(new FileInputStream(FILE))));
 	}
 
+	/**
+	 * Reads a {@link Compound} from the given {@link CompoundInput}.
+	 */
 	public static Compound read(final CompoundInput INPUT) throws Exception {
 		final Compound COMPOUND = new Compound();
 		final CompoundStackReverse STACK = new CompoundStackReverse(COMPOUND);
@@ -86,22 +107,6 @@ public class CompoundIO {
 		return COMPOUND;
 	}
 	
-	public static Compound readNull(final File FILE) {
-		try {
-			return read(FILE);
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public static Compound readNull(final CompoundInput INPUT) {
-		try {
-			return read(INPUT);
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
 	private static void readInto(final Compound COMPOUND, final CompoundInput INPUT, final CompoundStackReverse STACK) throws Exception {
 		final int SIZE = INPUT.readInt();
 		for (int i = 0; i != SIZE; i++){
@@ -112,6 +117,32 @@ public class CompoundIO {
 				COMPOUND.set(IDENTIFIER, STACK.get(Long.valueOf(INPUT.readLong())));
 			else if (TYPE.isValid())
 				COMPOUND.set(IDENTIFIER, TYPE.IO.read(INPUT));
+		}
+	}
+	
+	/**
+	 * Reads a {@link Compound} from the given {@link File} using
+	 * {@link CompoundInputStream}. Any thrown {@link Exception}s are
+	 * caught and <code>null</code> is returned instead.
+	 */
+	public static Compound readNull(final File FILE) {
+		try {
+			return read(FILE);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	
+	/**
+	 * Reads a {@link Compound} from the given {@link CompoundInput}.
+	 * Any thrown {@link Exception}s are caught and <oce>null</code>
+	 * is returned instead.
+	 */
+	public static Compound readNull(final CompoundInput INPUT) {
+		try {
+			return read(INPUT);
+		}catch (Exception e) {
+			return null;
 		}
 	}
 	
