@@ -22,6 +22,9 @@ import java.util.Iterator;
 
 import net.alexmack.compound.io.CompoundIO;
 
+/**
+ * Reads data from a formatted {@link String} for {@link CompoundIO}.
+ */
 public class CompoundInputString extends CompoundInput {
 
 	private final Iterator<String> ITERATOR;

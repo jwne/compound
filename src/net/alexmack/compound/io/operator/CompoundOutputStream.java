@@ -17,6 +17,11 @@ package net.alexmack.compound.io.operator;
 
 import java.io.DataOutputStream;
 
+import net.alexmack.compound.io.CompoundIO;
+
+/**
+ * Writes data to a {@link DataOutputStream} for {@link CompoundIO}.
+ */
 public class CompoundOutputStream extends CompoundOutput {
 
 	public final DataOutputStream STREAM;

@@ -17,8 +17,14 @@ package net.alexmack.compound.io.operator;
 
 import java.io.DataInputStream;
 
+/**
+ * Reads data from a {@link DataInputStream} for {@link CompoundIO}.
+ */
 public class CompoundInputStream extends CompoundInput {
 
+	/**
+	 * The {@link DataInputStream} being read from.
+	 */
 	public final DataInputStream STREAM;
 	
 	public CompoundInputStream(DataInputStream i) {

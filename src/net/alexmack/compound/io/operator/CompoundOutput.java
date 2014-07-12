@@ -15,6 +15,9 @@
  */
 package net.alexmack.compound.io.operator;
 
+/**
+ * Writes data for {@link CompoundIO}.
+ */
 public abstract class CompoundOutput {
 
 	public abstract void writeByte(byte b) throws Exception;

@@ -18,6 +18,9 @@ package net.alexmack.compound.io.operator;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
+/**
+ * Reads data from a <code>byte</code> array for {@link CompoundIO}.
+ */
 public class CompoundInputBytes extends CompoundInputStream {
 	
 	public CompoundInputBytes(byte[] b) {

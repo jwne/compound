@@ -18,6 +18,9 @@ package net.alexmack.compound.io.operator;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
+/**
+ * Writes data to a <code>byte</code> array for {@link CompoundIO}.
+ */
 public class CompoundOutputBytes extends CompoundOutputStream {
 
 	private final ByteArrayOutputStream BYTESTREAM;

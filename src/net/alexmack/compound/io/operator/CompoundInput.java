@@ -15,6 +15,9 @@
  */
 package net.alexmack.compound.io.operator;
 
+/**
+ * Reads data for {@link CompoundIO}.
+ */
 public abstract class CompoundInput {
 
 	public abstract byte readByte() throws Exception;

@@ -19,6 +19,9 @@ import java.net.URLEncoder;
 
 import net.alexmack.compound.io.CompoundIO;
 
+/**
+ * Writes data to a formatted {@link String} for {@link CompoundIO}.
+ */
 public class CompoundOutputString extends CompoundOutput {
 
 	protected static final String SEPARATOR = "/";
