@@ -21,10 +21,16 @@ import java.util.Map;
 import net.alexmack.compound.Compound;
 import net.alexmack.compound.stack.CompoundStack.CompoundStackItem;
 
+/**
+ * Contains {@link Compound} instances, each mapped to a unique
+ * address. Used by {@link CompoundIO} to correctly read linear
+ * {@link Compound} data and handle recursive elements.<br><br>
+ * Essentially reverses the effect of a {@link CompoundStack}.
+ */
 public class CompoundStackReverse {
 
 	/**
-	 * SCompound objects mapped by stack address.
+	 * {@link Compound} instances mapped by address.
 	 */
 	private final Map<Long, Compound> STACK = new HashMap<Long, Compound>();
 	private final Compound ROOT;
@@ -34,9 +40,9 @@ public class CompoundStackReverse {
 	}
 	
 	/**
-	 * Get the SCompound assigned to the given address.<br>
-	 * If the address has not yet been called, an empty
-	 * SCompound will be created and then returned.
+	 * Returns the {@link Compound} which has been assigned the given
+	 * address. If no such {@link Compound} has been called yet, one
+	 * will be created and then populated by {@link CompoundIO} later.
 	 */
 	public Compound get(Long a){
 		if (a.longValue() == CompoundStackItem.ADDRESS_ROOT)

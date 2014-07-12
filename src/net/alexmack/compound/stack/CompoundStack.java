@@ -22,8 +22,16 @@ import java.util.UUID;
 
 import net.alexmack.compound.Compound;
 
+/**
+ * Contains {@link CompoundStackItem} instances, each mapped to
+ * a unique address, which is used to correctly handle recursive
+ * elements and allow linear writing with {@link CompoundIO}.
+ */
 public class CompoundStack {
 
+	/**
+	 * Represents a single {@link Compound} in a {@link CompoundStack}.
+	 */
 	public static class CompoundStackItem {
 		
 		public static final long ADDRESS_ROOT = Long.MAX_VALUE;
@@ -38,15 +46,29 @@ public class CompoundStack {
 		
 	}
 	
+	/**
+	 * Last address assigned to a {@link CompoundStackItem}
+	 * in this {@link CompoundStack}.
+	 */
 	private long address = Long.MIN_VALUE;
 	
 	private final ArrayList<CompoundStackItem> ITEMS = new ArrayList<CompoundStack.CompoundStackItem>();
 	private final Map<UUID, CompoundStackItem> ITEMS_UUID = new HashMap<UUID, CompoundStack.CompoundStackItem>();
 	
+	/**
+	 * Creates a unique address to be used by a {@link CompoundStackItem}
+	 * in this {@link CompoundStack}. Addresses are only unique to the
+	 * instance by which they were generated.
+	 */
 	public long createAddress(){
 		return address++;
 	}
 	
+	/**
+	 * Adds the given {@link Compound} as a {@link CompoundStackItem} to this
+	 * {@link CompoundStack} and returns the unique address of the created
+	 * {@link CompoundStackItem}.
+	 */
 	public long add(Compound c){
 		if (ITEMS_UUID.containsKey(c.ID))
 			return ITEMS_UUID.get(c.ID).ADDRESS;
@@ -57,11 +79,19 @@ public class CompoundStack {
 		return ITEM.ADDRESS;
 	}
 	
+	/**
+	 * Adds the given {@link Compound} as a {@link CompoundStackItem} to this
+	 * {@link CompoundStack} as the root.
+	 */
 	public void addRoot(Compound c){
 		final CompoundStackItem ITEM = new CompoundStackItem(CompoundStackItem.ADDRESS_ROOT, c);
 		ITEMS_UUID.put(c.ID, ITEM);
 	}
 	
+	/**
+	 * Returns the next {@link CompoundStackItem} to be processed,
+	 * or <code>null</code> if there are none remaining.
+	 */
 	public CompoundStackItem nextItem(){
 		if (ITEMS.size() == 0)
 			return null;
@@ -71,6 +101,10 @@ public class CompoundStack {
 		return ITEM;
 	}
 	
+	/**
+	 * Returns whether {@link nextItem()} will return a valid value
+	 * when called.
+	 */
 	public boolean nextItemExists(){
 		return ITEMS.size() != 0;
 	}
