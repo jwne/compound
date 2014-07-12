@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Compound implements Cloneable {
-
+	
 	private final Map<String, Object> MAP = new HashMap<String, Object>();
 	
 	/**
