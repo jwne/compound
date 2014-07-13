@@ -26,7 +26,7 @@ public class CompoundConversion {
 	/**
 	 * Constructs a {@link Compound} representing the given array.
 	 */
-	public Compound toCompound(Object[] array) {
+	public static Compound toCompound(Object[] array) {
 		Compound compound = new Compound();
 		compound.set(ARRAY_SIZE, array.length);
 		for (int i = 0; i != array.length; i++)
@@ -37,7 +37,7 @@ public class CompoundConversion {
 	/**
 	 * Returns the array represented by the given {@link Compound}.
 	 */
-	public Object[] toArray(Compound compound) {
+	public static Object[] toArray(Compound compound) {
 		Object[] array = new Object[compound.getDefault(ARRAY_SIZE, 0)];
 		for (int i = 0; i != array.length; i++)
 			array[i] = compound.get(Integer.toString(i));
