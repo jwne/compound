@@ -54,11 +54,17 @@ public class CompoundIO {
 	}
 	
 	/**
-	 * Writes the given {@link Compound} to the given {@link File} using
-	 * {@link CompoundOutputStream}.
+	 * Writes the given {@link Compound} to the given {@link File}.
 	 */
 	public static void write(final Compound COMPOUND, final File FILE) throws Exception {
-		write(COMPOUND, new CompoundOutputStream(new DataOutputStream(new FileOutputStream(FILE))));
+		write(COMPOUND, new DataOutputStream(new FileOutputStream(FILE)));
+	}
+	
+	/**
+	 * Writes the given {@link Compound} to the given {@link DataOutputStream}.
+	 */
+	public static void write(final Compound COMPOUND, final DataOutputStream STREAM) throws Exception {
+		write(COMPOUND, new CompoundOutputStream(STREAM));
 	}
 	
 	/**
@@ -116,11 +122,17 @@ public class CompoundIO {
 	}
 	
 	/**
-	 * Reads a {@link Compound} from the given {@link File} using
-	 * {@link CompoundInputStream}.
+	 * Reads a {@link Compound} from the given {@link File}.
 	 */
 	public static Compound read(final File FILE) throws Exception {
-		return read(new CompoundInputStream(new DataInputStream(new FileInputStream(FILE))));
+		return read(new DataInputStream(new FileInputStream(FILE)));
+	}
+	
+	/**
+	 * Reads a {@link Compound} from the given {@link DataInputStream}.
+	 */
+	public static Compound read(final DataInputStream STREAM) throws Exception {
+		return read(new CompoundInputStream(STREAM));
 	}
 
 	/**
@@ -176,13 +188,26 @@ public class CompoundIO {
 	}
 	
 	/**
-	 * Reads a {@link Compound} from the given {@link File} using
-	 * {@link CompoundInputStream}. Any thrown {@link Exception}s are
-	 * caught and <code>null</code> is returned instead.
+	 * Reads a {@link Compound} from the given {@link File}.
+	 * Any thrown {@link Exception}s are caught and <code>null</code>
+	 * is returned instead.
 	 */
 	public static Compound readNull(final File FILE) {
 		try {
 			return read(FILE);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	
+	/**
+	 * Reads a {@link Compound} from the given {@link DataInputStream}.
+	 * Any thrown {@link Exception}s are caught and <code>null</code>
+	 * is returned instead.
+	 */
+	public static Compound readNull(final DataInputStream STREAM) {
+		try {
+			return read(STREAM);
 		}catch (Exception e) {
 			return null;
 		}
