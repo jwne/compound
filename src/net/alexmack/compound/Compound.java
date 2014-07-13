@@ -19,12 +19,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import net.alexmack.compound.stack.CompoundStack;
+import net.alexmack.compound.stack.CompoundStackReverse;
+
 public class Compound implements Cloneable {
 	
 	private final Map<String, Object> MAP = new HashMap<String, Object>();
 	
 	/**
-	 * {@link UUID} used to reference this {@link Compound}.
+	 * {@link UUID} used to reference this {@link Compound} in an instance
+	 * of {@link CompoundStack} or {@link CompoundStackReverse}. Not to be
+	 * confused with the address field of a {@link CompoundStack.CompoundStackItem}.
 	 */
 	public final UUID ID = UUID.randomUUID();
 	
