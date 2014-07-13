@@ -33,19 +33,17 @@ import net.alexmack.compound.stack.CompoundStack.CompoundStackItem;
 import net.alexmack.compound.stack.CompoundStackReverse;
 
 /**
- * Provies methods for reading/writing {@link Compound}s.
+ * Provies methods for reading/writing {@link Compound} instances.
  */
 public class CompoundIO {
 	
 	/**
-	 * Radix to be used when representing numbers in
-	 * any base other than 10.
+	 * Radix to be used when representing data in a non-10 base.
 	 */
 	public static final int RADIX = 32;
 	
 	/**
-	 * Writes the give {@link Compound} as a formatted {@link String} and
-	 * returns the result.
+	 * Returns the given {@link Compound} written as a formatted {@link String}.
 	 */
 	public static String write(final Compound COMPOUND) throws Exception {
 		final CompoundOutputString STRING = new CompoundOutputString();
