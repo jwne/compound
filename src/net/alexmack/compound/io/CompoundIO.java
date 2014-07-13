@@ -24,8 +24,10 @@ import java.io.FileOutputStream;
 import net.alexmack.compound.Compound;
 import net.alexmack.compound.io.operator.CompoundInput;
 import net.alexmack.compound.io.operator.CompoundInputStream;
+import net.alexmack.compound.io.operator.CompoundInputString;
 import net.alexmack.compound.io.operator.CompoundOutput;
 import net.alexmack.compound.io.operator.CompoundOutputStream;
+import net.alexmack.compound.io.operator.CompoundOutputString;
 import net.alexmack.compound.stack.CompoundStack;
 import net.alexmack.compound.stack.CompoundStack.CompoundStackItem;
 import net.alexmack.compound.stack.CompoundStackReverse;
@@ -40,6 +42,16 @@ public class CompoundIO {
 	 * any base other than 10.
 	 */
 	public static final int RADIX = 32;
+	
+	/**
+	 * Writes the give {@link Compound} as a formatted {@link String} and
+	 * returns the result.
+	 */
+	public static String write(final Compound COMPOUND) throws Exception {
+		final CompoundOutputString STRING = new CompoundOutputString();
+		write(COMPOUND, STRING);
+		return STRING.string();
+	}
 	
 	/**
 	 * Writes the given {@link Compound} to the given {@link File} using
@@ -96,6 +108,14 @@ public class CompoundIO {
 	}
 	
 	/**
+	 * Reads a {@link Compound} from the given {@link String} using
+	 * {@link CompoundInputString}.
+	 */
+	public static Compound read(final String STRING) throws Exception {
+		return read(new CompoundInputString(STRING));
+	}
+	
+	/**
 	 * Reads a {@link Compound} from the given {@link File} using
 	 * {@link CompoundInputStream}.
 	 */
@@ -139,6 +159,19 @@ public class CompoundIO {
 				COMPOUND.set(IDENTIFIER, STACK.get(Long.valueOf(INPUT.readLong())));
 			else if (TYPE.isValid())
 				COMPOUND.set(IDENTIFIER, TYPE.IO.read(INPUT));
+		}
+	}
+	
+	/**
+	 * Reads a {@link Compound} from the given {@link String} using
+	 * {@link CompoundInputString}. Any thrown {@link Exception}s are
+	 * caught and <code>null</code> is returned instead.
+	 */
+	public static Compound readNull(final String STRING) {
+		try {
+			return read(STRING);
+		}catch (Exception e) {
+			return null;
 		}
 	}
 	

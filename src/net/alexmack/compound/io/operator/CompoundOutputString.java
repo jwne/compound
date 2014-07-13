@@ -72,5 +72,10 @@ public class CompoundOutputString extends CompoundOutput {
 	public String string() {
 		return STRING.toString();
 	}
+	
+	@Override
+	public String toString() {
+		return string();
+	}
 
 }
