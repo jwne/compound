@@ -34,7 +34,9 @@ public class Compound implements Cloneable {
 	public final UUID ID = UUID.randomUUID();
 	
 	/**
-	 * Returns the element corresponding to the given identifier;
+	 * Returns the element corresponding to the given identifier.
+	 * Will return <code>null</code> if no such element exists, or <code>null</code>
+	 * has been specified as the corresponding element.
 	 */
 	public Object get(String i) {
 		synchronized (MAP) {
@@ -43,8 +45,9 @@ public class Compound implements Cloneable {
 	}
 	
 	/**
-	 * Returns the element corresponding to the given identifier,
-	 * with generic type casting.
+	 * Returns the element corresponding to the given identifier, with generic type casting.
+	 * Will return <code>null</code> if no such element exists, or <code>null</code>
+	 * has been specified as the corresponding element.
 	 */
 	@SuppressWarnings("unchecked")
 	public <TYPE> TYPE getCast(String i) {
