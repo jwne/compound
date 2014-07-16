@@ -199,7 +199,7 @@ Code:
 ```java
 	public static void main(String[] args) {
 		// The formatted String.
-		String input = /* Output from the above example, removed due to size. */;
+		String input = "7/born/5/February+12%2C+1809/nationality/5/American/birthplace/-3v/-8000000000000/died/5/April+15%2C+1865/age/2/1o/name/5/Abraham+Lincoln/children/-3v/-7vvvvvvvvvvvv/0/-8000000000000/3/state/5/Kentucky/nation/5/United+States+of+America/city/5/Hodgenville/0/-7vvvvvvvvvvvv/5/3/5/Tad+Lincoln/2/5/Willie+Lincoln/1/5/Edward+Baker+Lincoln/0/5/Robert+Todd+Lincoln/s/2/4/1";
 		
 		try {
 			// Read the Compound from the String with IO.
