@@ -33,7 +33,7 @@ import net.alexmack.compound.stack.CompoundStack.CompoundStackItem;
 import net.alexmack.compound.stack.CompoundStackReverse;
 
 /**
- * Provies methods for reading/writing {@link Compound} instances.
+ * Provides methods for reading/writing {@link Compound} instances.
  */
 public class CompoundIO {
 	
