@@ -28,7 +28,8 @@ Writes the given instance using the output provided. If no output is provided, a
 `read(??? input)`<br />
 Returns a `Compound` read from the given input. Accepted input classes are listed below. Additionally, the `readNull` method accepts all the same input but will return `null` should any errors occur, negating the need for a TRYCATCH statement.<br />
 
-###Information
+Information
+-----------
 
 `CompoundIO` Methods:
 
@@ -63,7 +64,8 @@ Accepted Elements:
 |BIG_DECIMAL     |bigd|0x07 |`BigDecimal`                 |None                       |
 *Elements which are not of a type listed in the table above will not be written by I/O methods.*
 
-###Example Code
+Example Code
+------------
 
 ####Basic Operations:<br />
 Code:
