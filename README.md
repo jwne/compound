@@ -1,7 +1,8 @@
 Compound
 ========
 
-Java Library for storing data - complex or simple - in an easy and reliable format.
+Java Library for storing data - complex or simple - in an easy and reliable format.<br />
+Code examples can be found at the bottom of this README, I recommend reading the whole thing.
 
 Important Classes
 -----------------
@@ -61,3 +62,22 @@ Accepted Elements:
 |BIG_INTEGER     |bigi|0x06 |`BigInteger`                 |None                       |
 |BIG_DECIMAL     |bigd|0x07 |`BigDecimal`                 |None                       |
 *Elements which are not of a type listed in the table above will not be written by I/O methods.*
+
+###Example Code
+
+####Basic Operations:<br />
+Code:
+```java
+	public static void main(String[] args) {
+		// Create a new Compound.
+		Compound compound = new Compound();
+		// Set an element.
+		compound.set("helloworld", "Hello World!");
+		// Output the element.
+		System.out.println(compound.get("helloworld"));
+	}
+```
+Output:
+```
+Hello World!
+```
