@@ -27,9 +27,9 @@ Writes the given instance using the output provided. If no output is provided, a
 `read(??? input)`<br />
 Returns a `Compound` read from the given input. Accepted input classes are listed below. Additionally, the `readNull` method accepts all the same input but will return `null` should any errors occur, negating the need for a TRYCATCH statement.<br />
 
-###Tables
+###Information
 
-`CompoundIO` methods:
+`CompoundIO` Methods:
 
 |I/O Method      |Accepted Input |Accpeted Output |
 |----------------|---------------|----------------|
@@ -38,10 +38,26 @@ Returns a `Compound` read from the given input. Accepted input classes are liste
 |Stream          |DataInputStream|DataOutputStream|
 |Operator        |CompoundInput  |CompoundOutput  |
 
-`CompoundIO` operators:
+`CompoundIO` Operators:
 
 |Operator        |Input Class         |Output Class        |
 |----------------|--------------------|--------------------|
 |Stream          |CompoundInputStream |CompoundOutputStream|
 |Bytes           |CompoundInputBytes  |CompoundOutputBytes |
 |String          |CompoundInputString |CompoundOutputString|
+
+Accepted Elements:
+
+|Name            |ID  |Hex  |Accepted Classes             |Accepted Primitives        |
+|----------------|----|-----|-----------------------------|---------------------------|
+|UNKNOWN         |????|-0x80|*N/A*                        |*N/A*                      |
+|COMPOUND        |comp|-0x7F|`Compound`                   |None                       |
+|NULL            |null|0x00 |None                         |`null`                     |
+|BOOLEAN         |bool|0x01 |`Boolean`                    |`boolean`                  |
+|INTEGER         |intg|0x02 |`Byte`, `Short`, `Integer`   |`byte`, `short`, `int`     |
+|INTEGER_LONG    |intl|0x03 |`Long`                       |`long`                     |
+|DOUBLE          |dobl|0x04 |`Float`, `Double`            |`float`, `double`          |
+|STRING          |strg|0x05 |`String`                     |None                       |
+|BIG_INTEGER     |bigi|0x06 |`BigInteger`                 |None                       |
+|BIG_DECIMAL     |bigd|0x07 |`BigDecimal`                 |None                       |
+*Elements which are not of a type listed in the table above will not be written by I/O methods.*
